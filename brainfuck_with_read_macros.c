@@ -51,11 +51,11 @@
 
 struct instruction_t {
     unsigned short operator;
-    unsigned short operand;
+    unsigned int operand;
 };
 
 static struct instruction_t PROGRAM[PROGRAM_SIZE];
-static unsigned short STACK[STACK_SIZE];
+static unsigned int STACK[STACK_SIZE];
 static unsigned int SP = 0;
 static int data[DATA_SIZE];
 
