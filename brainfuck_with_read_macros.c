@@ -25,6 +25,7 @@
 */
 
 #include <stdio.h>
+#include <string.h>
 
 #define OP_END          0
 #define OP_INC_DP       1
@@ -39,9 +40,9 @@
 #define SUCCESS         0
 #define FAILURE         1
 
-#define PROGRAM_SIZE    4096
-#define STACK_SIZE      512
-#define DATA_SIZE       65535
+#define PROGRAM_SIZE    100000000
+#define STACK_SIZE      10000
+#define DATA_SIZE       100000000
 
 #define STACK_PUSH(A)   (STACK[SP++] = A)
 #define STACK_POP()     (STACK[--SP])
@@ -56,9 +57,10 @@ struct instruction_t {
 static struct instruction_t PROGRAM[PROGRAM_SIZE];
 static unsigned short STACK[STACK_SIZE];
 static unsigned int SP = 0;
+static int data[DATA_SIZE];
 
 int compile_bf(FILE* fp) {
-    unsigned short pc = 0, jmp_pc;
+    unsigned int pc = 0, jmp_pc;
     int c;
     while ((c = getc(fp)) != EOF && pc < PROGRAM_SIZE) {
         switch (c) {
@@ -97,9 +99,9 @@ int compile_bf(FILE* fp) {
 }
 
 int execute_bf(FILE* fp) {
-    int data[DATA_SIZE], pc = 0, eof = feof(fp);
-    unsigned int ptr = DATA_SIZE;
-    while (--ptr) { data[ptr] = 0; }
+    int eof = feof(fp);
+    unsigned int pc = 0, ptr = 0;
+    memset(data, 0, sizeof(data));
     while (PROGRAM[pc].operator != OP_END && ptr < DATA_SIZE) {
         switch (PROGRAM[pc].operator) {
             case OP_INC_DP: ptr++; break;
