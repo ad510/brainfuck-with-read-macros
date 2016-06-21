@@ -2,7 +2,7 @@
  Brainfuck with Read Macros
  Copyright (c) 2016 Andrew Downing
 
- Based on Brainfuck-C ( http://github.com/kgabis/brainfuck-c )
+ Based on Brainfuck-C ( https://github.com/kgabis/brainfuck-c )
  Copyright (c) 2012 Krzysztof Gabis
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -110,6 +110,9 @@ int execute_bf(FILE* fp) {
             case OP_DEC_VAL: data[ptr]--; break;
             case OP_OUT: putchar(data[ptr]); break;
             case OP_IN:
+                // If program does not contain ! then accept user input
+                // If program contains ! then feed in the rest of the file followed by EOF, then accept user input after that
+                // That way, programs can accept user input regardless of whether they use !
                 data[ptr] = eof ? getchar() : getc(fp);
                 if (data[ptr] == EOF) {
                     eof = 1;
