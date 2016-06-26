@@ -192,7 +192,7 @@ void dump_state(const vector<byte>& mem) {
   fflush(stdout);
 }
 
-void run(const vector<Op*>& ops) {
+void run(const vector<Op*>& ops, FILE* fp) {
   int mp = 0;
   vector<byte> mem(1);
   for (size_t pc = 0; pc < ops.size(); pc++) {
@@ -231,7 +231,10 @@ void run(const vector<Op*>& ops) {
         break;
 
       case ',':
-        mem[mp] = getchar();
+        // If program does not contain ! then accept user input
+        // If program contains ! then feed in the rest of the file followed by EOF, then accept user input after that
+        // That way, programs can accept user input regardless of whether they use !
+        mem[mp] = feof(fp) ? getchar() : fgetc(fp);
         break;
 
       case '[':
@@ -376,13 +379,16 @@ int main(int argc, char* argv[]) {
       break;
     if (strchr("+-<>.,[]@", c))
       buf += c;
+    if (c == '!')
+      break;
   }
-  fclose(fp);
 
   vector<Op*> ops;
   parse(buf.c_str(), &ops);
   if (should_compile)
     compile(ops, argv[2]);
   else
-    run(ops);
+    run(ops, fp);
+
+  fclose(fp);
 }
