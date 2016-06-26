@@ -10,7 +10,7 @@ See the `examples` folder for sample programs.
 Usage
 -----
 ```
-gcc -o bfrm bfrm.c
+g++ -O3 -o bfrm bfrm.cc
 ./bfrm filename
 ```
 
@@ -18,6 +18,14 @@ But those aren't even really [read macros](https://gist.github.com/chaitanyagupt
 -------------------------------------------------------------------------------------------
 Perhaps, but the language is so expressive that you can implement them as a library.
 
-License
+Acknowledgement
+---------------
+This is based on [Shinichiro Hamaji's work](https://github.com/shinh/bflisp) of running a Lisp interpreter on Brainfuck.
+
+Copying
 -------
-Based on [Krzysztof Gabis's Brainfuck interpreter](https://github.com/kgabis/brainfuck-c) (with some modifications) and licensed under the MIT License.
+Written in 2016 by Andrew Downing
+
+To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this software to the public domain worldwide. This software is distributed without any warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication along with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
