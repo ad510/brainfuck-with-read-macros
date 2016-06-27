@@ -5,7 +5,9 @@ The most expressive programming language in the world. Its syntax is so powerful
 
 Brainfuck with Read Macros is just like [normal Brainfuck](https://en.wikipedia.org/wiki/Brainfuck), except that if you enter the [magic `!` command](https://esolangs.org/wiki/Brainfuck#Extensions), it will stop parsing your code and feed the rest of the file as input to your Brainfuck program. So if you want to extend the syntax of the language in any way imaginable, all you have to do is write an interpreter for your desired syntax in Brainfuck, then enter the magic `!` command... and bam! Now you're writing code using the new syntax.
 
-See the `examples` folder for sample programs, including a FizzBuzz program in Lisp syntax.
+See the `examples` folder for sample programs, including [FizzBuzz in Lisp syntax](https://raw.githubusercontent.com/ad510/brainfuck-with-read-macros/master/examples/fizzbuzz_lisp.bfrm).
+
+(And yes, I know these aren't really [read macros](https://gist.github.com/chaitanyagupta/9324402), but the language is so expressive that you can implement them in a library.)
 
 Usage
 -----
@@ -13,10 +15,6 @@ Usage
 g++ -O3 -o bfrm bfrm.cc
 ./bfrm filename
 ```
-
-But those aren't really [read macros](https://gist.github.com/chaitanyagupta/9324402)!
---------------------------------------------------------------------------------------
-Perhaps, but the language is so expressive that you can implement them as a library.
 
 Acknowledgement
 ---------------
