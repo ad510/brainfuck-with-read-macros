@@ -1,3 +1,5 @@
+// Based on https://github.com/shinh/bflisp/blob/master/bfopt.cc with some modifications
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -271,87 +273,10 @@ void run(const vector<Op*>& ops, FILE* fp) {
   }
 }
 
-void compile(const vector<Op*>& ops, const char* fname) {
-  FILE* fp = fopen(fname, "wb");
-  fprintf(fp, "#include <stdio.h>\n");
-  fprintf(fp, "unsigned char mem[4096*4096*10];\n");
-  fprintf(fp, "int main() {\n");
-  fprintf(fp, "unsigned char* mp = mem;\n");
-
-  for (size_t pc = 0; pc < ops.size(); pc++) {
-    const Op* op = ops[pc];
-    switch (op->op) {
-      case '+':
-        fprintf(fp, "++*mp;\n");
-        break;
-
-      case '-':
-        fprintf(fp, "--*mp;\n");
-        break;
-
-      case OP_MEM:
-        if (op->arg)
-          fprintf(fp, "*mp += %d;\n", op->arg);
-        break;
-
-      case '>':
-        fprintf(fp, "mp++;\n");
-        break;
-
-      case '<':
-        fprintf(fp, "mp--;\n");
-        break;
-
-      case OP_PTR:
-        if (op->arg)
-          fprintf(fp, "mp += %d;\n", op->arg);
-        break;
-
-      case '.':
-        fprintf(fp, "putchar(*mp);\n");
-        break;
-
-      case ',':
-        fprintf(fp, "*mp = getchar();\n");
-        break;
-
-      case '[':
-        fprintf(fp, "while (*mp) {\n");
-        break;
-
-      case ']':
-        fprintf(fp, "}\n");
-        break;
-
-      case OP_LOOP: {
-        for (map<int, int>::const_iterator iter = op->loop->addsub.begin();
-             iter != op->loop->addsub.end();
-             ++iter) {
-          int p = iter->first;
-          int d = iter->second;
-          if (p != 0) {
-            fprintf(fp, "mp[%d] += *mp * %d;\n", p, d);
-          }
-        }
-        fprintf(fp, "*mp = 0;\n");
-        break;
-      }
-
-    }
-  }
-
-  fprintf(fp, "return 0;\n");
-  fprintf(fp, "}\n");
-  fclose(fp);
-}
-
 int main(int argc, char* argv[]) {
-  bool should_compile = false;
   const char* arg0 = argv[0];
-  while (argv[1][0] == '-') {
-    if (!strcmp(argv[1], "-c")) {
-      should_compile = true;
-    } else if (!strcmp(argv[1], "-v")) {
+  while (argc >= 2 && argv[1][0] == '-') {
+    if (!strcmp(argv[1], "-v")) {
       g_verbose = true;
     } else {
       fprintf(stderr, "Unknown flag: %s\n", argv[1]);
@@ -361,7 +286,7 @@ int main(int argc, char* argv[]) {
     argv++;
   }
 
-  if (argc < 2 || (argc < 3 && should_compile)) {
+  if (argc < 2) {
     fprintf(stderr, "Usage: %s <bf>\n", arg0);
     return 1;
   }
@@ -385,10 +310,8 @@ int main(int argc, char* argv[]) {
 
   vector<Op*> ops;
   parse(buf.c_str(), &ops);
-  if (should_compile)
-    compile(ops, argv[2]);
-  else
-    run(ops, fp);
+  run(ops, fp);
 
   fclose(fp);
+  return 0;
 }
