@@ -1,5 +1,4 @@
-[ Hello World program from https://en.wikipedia.org/wiki/Brainfuck
-  Brainfuck with Read Macros is backward compatible with Brainfuck.
-]
+Hello World program [https://en.wikipedia.org/wiki/Brainfuck#Hello_World.21]
+Brainfuck with Read Macros is backward compatible with Brainfuck
 
 ++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.

@@ -1,0 +1,21 @@
+Hello World program running in a Brainfuck interpreter written in Brainfuck
+
+First you write a Brainfuck interpreter in Brainfuck [http://www.hevanet.com/cristofd/brainfuck/dbfi.b]
+
+>>>+[[-]>>[-]++>+>+++++++[<++++>>++<-]++>>+>+>+++++[>++>++++++<<-]+>>>,<++[[>[
+->>]<[>>]<<-]<[<]<+>>[>]>[<+>-[[<+>-]>]<[[[-]<]++<-[<+++++++++>[<->-]>>]>>]]<<
+]<]<[[<]>[[>]>>[>>]+[<<]<[<]<+>>-]>[>]+[->>]<<<<[[<<]<[<]+<<[+>+<<-[>-->+<<-[>
++<[>>+<<-]]]>[<+>-]<]++>>-->[>]>>[>>]]<<[>>+<[[<]<]>[[<<]<[<]+[-<+>>-[<<+>++>-
+[<->[<<+>>-]]]<[>+<-]>]>[>]>]>[>>]>>]<<[>>+>>+>>]<<[->>>>>>>>]<<[>.>>>>>>>]<<[
+>->>>>>]<<[>,>>>]<<[>+>]<<[+<<]<]
+
+Then you enter the magic command
+!
+
+And now our code is running in a Brainfuck interpreter written in Brainfuck
+
+Say hello [https://en.wikipedia.org/wiki/Brainfuck#Hello_World.21]
+
+++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.
+
+It's that easy!
