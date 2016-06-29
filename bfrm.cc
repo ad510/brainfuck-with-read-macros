@@ -230,6 +230,7 @@ void run(const vector<Op*>& ops, FILE* fp) {
 
       case '.':
         putchar(mem[mp]);
+        fflush(stdout);
         break;
 
       case ',':
