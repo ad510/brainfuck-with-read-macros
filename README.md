@@ -1,7 +1,7 @@
 Brainfuck with Read Macros
 ==========================
 
-The most expressive programming language in the world. Its syntax is so powerful that you can literally turn it into any language you want!
+The most expressive programming language in the world. Its abstractions are so powerful that you can literally turn it into any language you want!
 
 Brainfuck with Read Macros is just like [normal Brainfuck](https://en.wikipedia.org/wiki/Brainfuck), except that if you enter the [magic `!` command](https://esolangs.org/wiki/Brainfuck#Extensions), it will stop parsing your code and feed the rest of the file as input to your Brainfuck program. So if you want to extend the syntax of the language in any way imaginable, all you have to do is write an interpreter for your desired syntax in Brainfuck, then enter the magic `!` command... and bam! Now you're writing code using the new syntax.
 
