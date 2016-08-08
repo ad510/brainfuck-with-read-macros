@@ -7,14 +7,23 @@ Brainfuck with Read Macros is just like [normal Brainfuck](https://en.wikipedia.
 
 See the `examples` folder for sample programs, including [FizzBuzz in Lisp syntax](https://raw.githubusercontent.com/ad510/brainfuck-with-read-macros/master/examples/fizzbuzz_lisp.bfrm).
 
-(And yes, I know these aren't really [read macros](https://gist.github.com/chaitanyagupta/9324402), but the language is so expressive that you can implement them in a library.)
-
 Usage
 -----
 ```
 g++ -O3 -o bfrm bfrm.cc
 ./bfrm filename
 ```
+
+But those aren't really [read macros](https://gist.github.com/chaitanyagupta/9324402)!
+--------------------------------------------------------------------------------------
+Perhaps, but the language is so expressive that you can implement them as a library.
+
+How do I import other people's libraries?
+-----------------------------------------
+
+The idiomatic way to do this is to write a package manager that inputs a list of dependencies, downloads them all, and outputs a Brainfuck with Read Macros file with all the dependencies embedded in it so that you can just write your new code at the bottom of the file. That may sound like a stupid idea, but keep in mind that in a "normal" importing system, you'd still have to download the dependencies anyway -- they'd just be in separate files instead of the same file as your program.
+
+Brainfuck with Read Macros does not make any assumptions about your filesystem so you can easily port it to [non-standard filesystems](https://stackoverflow.com/questions/1575155/what-is-a-database-file-system) that do not necessarily have folders or file names. But if we extend the concept of "the most expressive programming language in the world" to allow a program to be written across multiple files, then just about every programming language in use today is already the most expressive programming language in the world. How? Instead of writing an interpreter at the top of the file, entering the magic command, then writing code in any language you want, you instead write an interpreter in one file that runs code from another file, and the code in that other file can be written in any language you want!
 
 Acknowledgement
 ---------------
