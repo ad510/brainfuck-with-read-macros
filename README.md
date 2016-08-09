@@ -20,7 +20,7 @@ Maybe it is now, but it won't be after I write a sufficiently smart compiler!
 
 But it doesn't have "real" [read macros](https://gist.github.com/chaitanyagupta/9324402) or [insert abstraction here]!
 ----------------------------------------------------------------------------------------------------------------------
-But guess what? The language is so expressive that you can implement those abstractions as a library! Arguably, that's even better than if they're built into the language because then you can do [bottom-up programming](http://paulgraham.com/progbot.html). Isn't that cool?
+But guess what? The language is so expressive that you can implement those abstractions as a library! Arguably, that's even better than if they're built into the language because then you can do [bottom-up programming](http://paulgraham.com/progbot.html).
 
 But how do I import libraries?
 ------------------------------
